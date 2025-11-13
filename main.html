@@ -1,16 +1,90 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alphabetical Article Sorter</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #e9ecef;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 6px;
+      font-weight: 500;
+      color: #222;
+      transition: background 0.3s;
+    }
+
+    li:hover {
+      background: #dee2e6;
+    }
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div class="container">
+    <h1>Alphabetical Article Sorter</h1>
+    <ul id="band"></ul>
+  </div>
 
+  <script>
+    const bands = [
+      'The Plot in You',
+      'The Devil Wears Prada',
+      'Pierce the Veil',
+      'Norma Jean',
+      'The Bled',
+      'Say Anything',
+      'The Midway State',
+      'We Came as Romans',
+      'Counterparts',
+      'Oh, Sleeper',
+      'A Skylit Drive',
+      'Anywhere But Here',
+      'An Old Dog'
+    ];
+
+    // Function to remove "A", "An", "The" from sorting comparison
+    function strip(bandName) {
+      return bandName.replace(/^(a |an |the )/i, '').trim();
+    }
+
+    // Sort the bands alphabetically ignoring those words
+    const sortedBands = bands.sort((a, b) => (strip(a) > strip(b) ? 1 : -1));
+
+    // Display in <ul>
+    document.getElementById('band').innerHTML =
+      sortedBands.map(band => `<li>${band}</li>`).join('');
+  </script>
 </body>
-
 </html>
+
